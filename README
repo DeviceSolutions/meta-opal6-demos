@@ -1,0 +1,56 @@
+This README file contains information on the contents of the
+opal6-demos layer.
+
+Please see the corresponding sections below for details.
+
+
+Dependencies
+============
+
+This layer depends on:
+
+  URI: https://github.com/Freescale/fsl-community-bsp-platform
+  layers: base meta-fsl-arm meta-fsl-arm-extra meta-openembedded poky
+  branch: daisy
+
+Patches
+=======
+
+Please submit any patches against the opal6-demos layer to the
+xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
+
+Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+
+
+Table of Contents
+=================
+
+  I. Adding the opal6-demos layer to your build
+ II. Misc
+
+
+I. Adding the opal6-demos layer to your build
+=================================================
+
+--- replace with specific instructions for the opal6-demos layer ---
+
+In order to use this layer, you need to make the build system aware of
+it.
+
+Assuming the opal6-demos layer exists at the top-level of your
+yocto build tree, you can add it to the build system by adding the
+location of the opal6-demos layer to bblayers.conf, along with any
+other layers needed. e.g.:
+
+  BBLAYERS ?= " \
+    /path/to/yocto/meta \
+    /path/to/yocto/meta-yocto \
+    /path/to/yocto/meta-yocto-bsp \
+    /path/to/yocto/meta-opal6-demos \
+    "
+
+
+II. Misc
+========
+
+--- replace with specific information about the opal6-demos layer ---
