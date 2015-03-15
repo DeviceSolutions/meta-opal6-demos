@@ -1,0 +1,23 @@
+#!/bin/sh
+
+PROVIDER=${1:-internal}
+
+echo 175 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio175/direction
+
+if [ "${PROVIDER}" = "internal" ]
+then
+	echo selected internal sim
+	echo 1 > /sys/class/gpio/gpio175/value
+else
+	echo selected external sim for ${PROVIDER}
+	echo 0 > /sys/class/gpio/gpio175/value
+fi
+
+if [ "$1" = "quick" ]
+then
+    touch /var/run/ppp-quick
+    shift
+fi
+
+/usr/sbin/pppd call ${PROVIDER}
