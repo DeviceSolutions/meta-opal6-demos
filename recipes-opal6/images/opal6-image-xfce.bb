@@ -27,4 +27,5 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 
 IMAGE_INSTALL_append = " e2fsprogs-mke2fs dosfstools"
 IMAGE_INSTALL_append = " packagegroup-xfce-extended midori"
-IMAGE_INSTALL_append = " ppp wvdial linux-firmware"
+IMAGE_INSTALL_append = " ppp wvdial linux-firmware canutils"
+IMAGE_INSTALL_append = " opal6-apps-led-demo opal6-apps-rs485-test"
