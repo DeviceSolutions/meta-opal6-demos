@@ -6,15 +6,14 @@ require recipes-kernel/linux/linux-dtb.inc
 
 SUMMARY = "Linux kernel for Device Solution boards"
 
-SRCREV = "${AUTOREV}"
+# Bitbucket
 SRCBRANCH = "imx6dl-opal"
-SRC_URI = "git://bitbucket.org/devicesolutions/opal6-linux-3.10.17.git;branch=${SRCBRANCH};protocol=http;user=user:password \
+SRCREV = "${AUTOREV}"
+SRC_URI = "git://bitbucket.org/devicesolutionslinux/opal6-linux-3.10.17.git;branch=${SRCBRANCH};protocol=http \
            file://defconfig"
 
-# Patches
-SRC_URI += "file://opal6-mmc-enum.patch"
-
-LOCALVERSION = "-1.0.1_ga+yocto"
+LOCALVERSION = "-1.0.1_ga"
 DEPENDS += "lzop-native bc-native"
+
 COMPATIBLE_MACHINE = "(mx6)"
 COMPATIBLE_MACHINE = "(opal6dl)"
