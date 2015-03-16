@@ -1,17 +1,22 @@
 #!/bin/sh
 
 PROVIDER=${1:-internal}
+GPIODIR=/sys/class/gpio/gpio175
 
-echo 175 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio175/direction
+if [ ! -d "$GPIODIR" ]
+then
+        echo 175 > /sys/class/gpio/export
+fi
+
+echo out > ${GPIODIR}/direction
 
 if [ "${PROVIDER}" = "internal" ]
 then
-	echo selected internal sim
-	echo 1 > /sys/class/gpio/gpio175/value
+        echo selecting internal sim
+        echo 1 > ${GPIODIR}/value
 else
-	echo selected external sim for ${PROVIDER}
-	echo 0 > /sys/class/gpio/gpio175/value
+        echo selecting external sim
+        echo 0 > ${GPIODIR}/value
 fi
 
 if [ "$1" = "quick" ]

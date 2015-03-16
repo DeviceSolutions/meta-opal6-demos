@@ -17,7 +17,7 @@ ABORT		"NO CARRIER"
 ABORT		"NO DIALTONE"
 ABORT		"NO DIAL TONE"
 ""		ATZ
+OK		AT+CGDCONT=1,"IP","\T","0.0.0.0",0,0
 OK		ATD*99***1#
-OK              AT+CGDCONT=1,"IP","\T","0.0.0.0",0,0
 CONNECT		""
 
