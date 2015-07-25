@@ -1,7 +1,7 @@
 require recipes-bsp/u-boot/u-boot.inc
 
 LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file:///home/jinglis/opal6-u-boot-2015.01/README;md5=813b058284702a930d44d94cca59ee96"
+LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 COMPATIBLE_MACHINE = "(opal6dl)"
 
 PROVIDES = "u-boot"
