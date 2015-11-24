@@ -11,7 +11,7 @@ This layer depends on:
 
   URI: https://github.com/Freescale/fsl-community-bsp-platform
   layers: base meta-fsl-arm meta-fsl-arm-extra meta-openembedded poky
-  branch: daisy
+  branch: fido
 
 Patches
 =======
@@ -39,18 +39,34 @@ it.
 
 Assuming the opal6-demos layer exists at the top-level of your
 yocto build tree, you can add it to the build system by adding the
-location of the opal6-demos layer to bblayers.conf, along with any
+location of the opal6-demos layer to bblayers.conf, along with the 
 other layers needed. e.g.:
 
   BBLAYERS ?= " \
-    /path/to/yocto/meta \
-    /path/to/yocto/meta-yocto \
-    /path/to/yocto/meta-yocto-bsp \
-    /path/to/yocto/meta-opal6-demos \
-    "
+	  ${BSPDIR}/sources/meta-openembedded/meta-python \
+	  ${BSPDIR}/sources/meta-openembedded/meta-networking \
+	  ${BSPDIR}/sources/meta-openembedded/meta-gnome \ 
+	  ${BSPDIR}/sources/meta-openembedded/meta-xfce \ 
+	  ${BSPDIR}/sources/meta-opal6-demos \
+  "
 
+Set your machine type to 'opal6dl'. Do this by editing the MACHINE variable in local.conf.
+i.e.
+
+  MACHINE ??= 'opal6dl'
 
 II. Misc
 ========
 
---- replace with specific information about the opal6-demos layer ---
+The machine is configured to build kernel version 3.14.28.
+There are 3 demo images available:
+
+1) opal6-image-minimal
+This is a bare minimum image which basically just lets the board boot.
+
+2) opal6-image-xfce
+This image provides all the components necessary to run the XFCE desktop.
+
+3) opal6-image-base
+A recommended starting point for developing custom images which will ensure all required
+kernel modules and other components are included in the root filesystem.

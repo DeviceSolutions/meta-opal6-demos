@@ -15,6 +15,7 @@ SRC_URI += "file://defconfig \
 	    file://csi_mux_init.patch \
 	    file://dt_lvds_fix.patch \
 	    file://rs485.patch \
+	    file://dt_sgtl5000.patch \
 "
 
 COMPATIBLE_MACHINE = "(opal6dl)"
