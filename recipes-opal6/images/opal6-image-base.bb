@@ -12,5 +12,6 @@ IMAGE_INSTALL_append = " opal6-apps-rs485-test"
 IMAGE_INSTALL_append = " imx-gpu-viv imx-gpu-viv-dev"
 IMAGE_INSTALL_append = " libopencv-core-dev libopencv-highgui-dev \
 			 libopencv-imgproc-dev libopencv-objdetect-dev libopencv-ml-dev"
+IMAGE_INSTALL_append = " nano"
 
 LICENSE = "MIT"
