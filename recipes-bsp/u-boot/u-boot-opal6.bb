@@ -10,9 +10,8 @@ PV = "v2015.01"
 
 # Bitbucket
 SRCREV = "${AUTOREV}"
-SRCBRANCH = "master"
-SRC_URI = "git://bitbucket.org/devicesolutionslinux/opal6-u-boot-2015.01.git;branch=${SRCBRANCH};protocol=http"
-SRC_URI += "file://0001-uboot-support-gcc5.patch "
+SRCBRANCH = "opal6_2015.01"
+SRC_URI = "git://github.com/DeviceSolutions/u-boot-opal6.git;branch=${SRCBRANCH}"
 S = "${WORKDIR}/git"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
