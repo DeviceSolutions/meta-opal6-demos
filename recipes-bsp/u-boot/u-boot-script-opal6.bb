@@ -6,9 +6,8 @@ PV = "v2015.01"
 
 # Bitbucket
 SRCREV = "${AUTOREV}"
-SRCBRANCH = "master"
-SRC_URI = "git://bitbucket.org/devicesolutionslinux/opal6-u-boot-2015.01.git;branch=${SRCBRANCH};protocol=http"
-
+SRCBRANCH = "opal6_2015.01"
+SRC_URI = "git://github.com/DeviceSolutions/u-boot-opal6.git;branch=${SRCBRANCH}"
 S = "${WORKDIR}/git"
 
 inherit deploy
