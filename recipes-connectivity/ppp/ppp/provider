@@ -12,7 +12,7 @@ user "anonymous"
 # MUST CHANGE: replace ******** with the phone number of your provider.
 # The /etc/chatscripts/pap chat script may be modified to change the
 # modem initialization string.
-connect "/usr/sbin/chat -v -f /etc/chatscripts/pap -T dynamic.dcnm2m.com"
+connect "/usr/sbin/chat -v -f /etc/chatscripts/pap -T internet"
 
 # Serial device to which the modem is connected.
 /dev/ttyACM0
