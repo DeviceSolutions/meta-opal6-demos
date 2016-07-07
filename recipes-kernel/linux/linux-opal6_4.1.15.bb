@@ -6,8 +6,8 @@ DESCRIPTION = "Linux kernel for Device Solutions Opal6 boards."
 
 DEPENDS += "lzop-native bc-native"
 
-SRCBRANCH = "opal6-4.1.15-001"
-SRCREV = "f68a54193db60f59b38c4b06aad03d87cb8190ac"
+SRCBRANCH = "opal6-4.1.15-002"
+SRCREV = "7f3d9f188f9c6821969c00b0836020bbd36fbf4e"
 
 LOCALVERSION = "-${SRCBRANCH}"
 SCMVERSION = ""
