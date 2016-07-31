@@ -7,5 +7,4 @@ iface lo inet loopback
 # Wired interface
 auto eth0
 iface eth0 inet dhcp
-# Add workaround to prevent boot delay if ethernet cable not plugged in
-pre-up /usr/bin/dhclient_workaround
+
