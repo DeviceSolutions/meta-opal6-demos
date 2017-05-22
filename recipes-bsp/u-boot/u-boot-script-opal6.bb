@@ -52,4 +52,4 @@ do_install[noexec] = "1"
 do_populate_sysroot[noexec] = "1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(opal6dl|opal6q)"
+COMPATIBLE_MACHINE = "(opal6dl|opal6q|opal6s)"
