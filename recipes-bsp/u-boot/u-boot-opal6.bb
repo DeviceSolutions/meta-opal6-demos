@@ -9,9 +9,11 @@ PROVIDES = "u-boot"
 PV = "v2015.01"
 
 # Bitbucket
-SRCREV = "f3c9b438f3a6c144eeeb6e8e2ea2e5570ef00160"
-SRCBRANCH = "opal6-4.1.15-003"
-SRC_URI = "git://github.com/DeviceSolutions/u-boot-opal6.git;branch=${SRCBRANCH}"
+SRCREV = "db7f8e84b5411b77100993f38ac2dfe43e573bc9"
+SRCBRANCH = "opal6_2015.01"
+SRC_URI = "git://github.com/DeviceSolutions/u-boot-opal6.git;branch=${SRCBRANCH} \
+"
+
 S = "${WORKDIR}/git"
 
 inherit fsl-u-boot-localversion
