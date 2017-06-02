@@ -17,17 +17,17 @@ UPGRADESCRIPT = "${S}/board/devicesolutions/opal6boards/6x_upgrade.txt"
 
 do_mkimage () {
     # allow deploy to use the ${MACHINE} name to simplify things
-    if [ ! -d board/devicesolutions/${MACHINE} ]; then
-        mkdir -p board/devicesolutions/${MACHINE}
+    if [ ! -d ${S}/board/devicesolutions/${MACHINE} ]; then
+        mkdir -p ${S}/board/devicesolutions/${MACHINE}
     fi
 
     uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
                   -n "boot script" -d ${BOOTSCRIPT} \
-                  board/devicesolutions/${MACHINE}/6x_bootscript
+                  ${S}/board/devicesolutions/${MACHINE}/6x_bootscript
 
     uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
                   -n "upgrade script" -d ${UPGRADESCRIPT} \
-                  board/devicesolutions/${MACHINE}/6x_upgrade
+                  ${S}/board/devicesolutions/${MACHINE}/6x_upgrade
 }
 
 addtask mkimage after do_compile before do_install
@@ -52,4 +52,4 @@ do_install[noexec] = "1"
 do_populate_sysroot[noexec] = "1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(opal6dl|opal6q)"
+COMPATIBLE_MACHINE = "(opal6dl|opal6q|opal6s)"

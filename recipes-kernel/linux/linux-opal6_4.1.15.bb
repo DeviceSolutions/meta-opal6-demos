@@ -6,14 +6,17 @@ DESCRIPTION = "Linux kernel for Device Solutions Opal6 boards."
 
 DEPENDS += "lzop-native bc-native"
 
-SRCBRANCH = "opal6-4.1.15-002"
-SRCREV = "7f3d9f188f9c6821969c00b0836020bbd36fbf4e"
+SRCBRANCH = "opal6-4.1.15"
+SRCREV = "${AUTOREV}"
 
 LOCALVERSION = "-${SRCBRANCH}"
 SCMVERSION = ""
 
 SRC_URI = "git://github.com/DeviceSolutions/linux-opal6.git;branch=${SRCBRANCH}\
-		   file://defconfig \
+			file://defconfig \
+			file://bcmhd_gcc6_indent_warning_error_fix.patch \
+			file://gcc6_integrate_fix.patch \
+			file://gpu-viv_gcc6_indent_warning_error_fix.patch \
 "
 
-COMPATIBLE_MACHINE = "(opal6dl|opal6q)"
+COMPATIBLE_MACHINE = "(opal6dl|opal6q|opal6s)"
