@@ -1,0 +1,15 @@
+[connection]
+id=telit
+type=gsm
+
+[gsm]
+apn=internet
+#number=*99#
+
+[ipv4]
+method=auto
+#dns=8.8.8.8;8.8.4.4;
+#ignore-auto-dns=true
+
+[ipv6]
+method=auto

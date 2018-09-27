@@ -1,1 +1,0 @@
-Note the dynamic linking: -lemqtt rather than -lmosquitto when building.

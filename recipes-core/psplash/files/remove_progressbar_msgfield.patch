@@ -1,0 +1,51 @@
+From ed2545c0209e6b5e54836c271316453b27b644b1 Mon Sep 17 00:00:00 2001
+From: John Inglis <john@clanbyte.com>
+Date: Mon, 30 Apr 2018 22:00:54 +1200
+Subject: [PATCH] remove progress bar and message box
+
+
+diff --git a/psplash.c b/psplash.c
+index 185f38e..edf599a 100644
+--- a/psplash.c
++++ b/psplash.c
+@@ -115,11 +115,11 @@ parse_command (PSplashFB *fb, char *string, int length)
+ 
+   if (!strcmp(command,"PROGRESS")) 
+     {
+-      psplash_draw_progress (fb, atoi(strtok(NULL,"\0")));
++      //psplash_draw_progress (fb, atoi(strtok(NULL,"\0")));
+     } 
+   else if (!strcmp(command,"MSG")) 
+     {
+-      psplash_draw_msg (fb, strtok(NULL,"\0"));
++      //psplash_draw_msg (fb, strtok(NULL,"\0"));
+     } 
+   else if (!strcmp(command,"QUIT")) 
+     {
+@@ -287,19 +287,19 @@ main (int argc, char** argv)
+ 			 POKY_IMG_RLE_PIXEL_DATA);
+ 
+   /* Draw progress bar border */
+-  psplash_fb_draw_image (fb, 
++  /* psplash_fb_draw_image (fb, 
+ 			 (fb->width  - BAR_IMG_WIDTH)/2, 
+ 			 SPLIT_LINE_POS(fb),
+ 			 BAR_IMG_WIDTH,
+ 			 BAR_IMG_HEIGHT,
+ 			 BAR_IMG_BYTES_PER_PIXEL,
+ 			 BAR_IMG_ROWSTRIDE,
+-			 BAR_IMG_RLE_PIXEL_DATA);
++			 BAR_IMG_RLE_PIXEL_DATA); */
+ 
+-  psplash_draw_progress (fb, 0);
++  //psplash_draw_progress (fb, 0);
+ 
+ #ifdef PSPLASH_STARTUP_MSG
+-  psplash_draw_msg (fb, PSPLASH_STARTUP_MSG);
++  //psplash_draw_msg (fb, PSPLASH_STARTUP_MSG);
+ #endif
+ 
+   psplash_main (fb, pipe_fd, 0);
+-- 
+2.7.4
+

@@ -1,0 +1,41 @@
+#!/bin/sh
+
+DAEMON="/usr/sbin/NetworkManager"
+PIDFILE="/var/run/NetworkManager/NetworkManager.pid"
+DESC="NetworkManager"
+
+case "${1}" in
+	start)
+		mkdir -p /var/run/NetworkManager
+		/usr/bin/resetmodem
+#		/home/root/ATDMScripts/configure_mbim.sh
+		echo -n "Starting ${DESC}: "
+		${DAEMON} -d &
+		echo "done"
+		;;
+	stop)
+		echo -n "Stopping ${DESC}: "
+		killall -s 9 NetworkManager
+		killall -s 9 ModemManager
+		killall -s 9 pppd
+		killall -s 9 wpa_supplicant
+		killall -s 9 dnsmasq
+		killall -s 9 dhclient
+		echo "done"
+		;;
+	restart)
+		${0} stop
+		sleep 1
+		${0} start
+		;;
+	debug)
+		${0} stop
+		sleep 1
+		/usr/sbin/ModemManager --debug &
+		${0} start
+		;;
+	*)
+		echo "Usage: ${0} {start|stop|restart}"
+		exit 1
+		;;
+esac
