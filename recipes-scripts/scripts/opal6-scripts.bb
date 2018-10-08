@@ -23,8 +23,6 @@ FILES_${PN} += "/etc/udev/rules.d/11-automount.rules"
 
 do_install_append () {
 	install -d ${D}${bindir}
-	install -m 0755 ${WORKDIR}/add_wifi.sh ${D}${bindir}/add_wifi
-	install -m 0755 ${WORKDIR}/delete_all_wireless_networks.sh ${D}${bindir}/delete_all_wireless_networks
 	install -m 0755 ${WORKDIR}/gpio_config.sh ${D}${bindir}/gpio_config
 	install -m 0755 ${WORKDIR}/gpio_value.sh ${D}${bindir}/gpio_value
 	install -m 0755 ${WORKDIR}/Startup.sh ${D}${bindir}/StartUp
