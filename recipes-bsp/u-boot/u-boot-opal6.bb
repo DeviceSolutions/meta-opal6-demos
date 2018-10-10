@@ -6,14 +6,15 @@ COMPATIBLE_MACHINE = "(opal6dl|opal6q|opal6s)"
 
 PROVIDES = "u-boot"
 
-PV = "v2015.01"
+PV = "v2018.05"
 
 # Bitbucket
 SRCREV = "${AUTOREV}"
-SRCBRANCH = "opal6_2015.01"
+SRCBRANCH = "opal6_2018.05"
 SRC_URI = "git://github.com/DeviceSolutions/u-boot-opal6.git;branch=${SRCBRANCH} \
 	   file://fix-build-error-under-gcc6.patch \
 "
+
 S = "${WORKDIR}/git"
 
 inherit fsl-u-boot-localversion
