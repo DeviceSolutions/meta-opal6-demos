@@ -1,0 +1,9 @@
+[Unit]
+Description=Opal-6 system init
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/InitSystem.sh
+
+[Install]
+WantedBy=multi-user.target

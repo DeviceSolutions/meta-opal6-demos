@@ -1,0 +1,9 @@
+[Unit]
+Description=Opal-6 startup
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/Startup.sh
+
+[Install]
+WantedBy=sysinit.target

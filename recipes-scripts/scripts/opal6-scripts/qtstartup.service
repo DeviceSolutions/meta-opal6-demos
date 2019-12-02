@@ -1,0 +1,9 @@
+[Unit]
+Description=QT Demo App
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/qtstartup.sh
+
+[Install]
+WantedBy=multi-user.target

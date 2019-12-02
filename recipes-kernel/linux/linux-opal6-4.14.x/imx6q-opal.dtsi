@@ -1,0 +1,234 @@
+/*
+ * Copyright 2014 Device Solutions Ltd
+ *
+ * Author: John Inglis <john@clanbyte.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ */
+#include "imx6q.dtsi"
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	model = "Device Solutions Opal i.MX6Q Board";
+	compatible = "devicesolutions,imx6q-opal", "fsl,imx6q";
+
+	memory {
+		reg = <0x10000000 0x80000000>;
+	};
+
+    regulators {
+		compatible = "simple-bus";
+
+		reg_DCDC_3v3: dcdc_3v3 {
+			compatible = "regulator-fixed";
+			regulator-name = "DCDC_3v3";
+			regulator-min-microvolt = <3300000>;
+			regulator-max-microvolt = <3300000>;
+			regulator-always-on;
+		};
+
+		reg_LDO_3v0: ldo_3v0 {
+			compatible = "regulator-fixed";
+			regulator-name = "LDO_3v0";
+			regulator-min-microvolt = <3000000>;
+			regulator-max-microvolt = <3000000>;
+			regulator-always-on;
+		};
+	};
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <100000>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c1_2>;
+
+    pmic: dialog@58 {
+		compatible = "dialog,da9063";
+		reg = <0x58>;
+        interrupt-parent = <&gpio7>;
+		interrupts = <13 0x8>;  /* active low triggered */
+
+		regulators {
+			vddsoc1_reg: bcore1 {
+				regulator-min-microvolt = <1400000>;
+				regulator-max-microvolt = <1400000>;
+				regulator-always-on;
+			};
+
+			vddsoc2_reg: bcore2 {
+				regulator-min-microvolt = <1400000>;
+				regulator-max-microvolt = <1400000>;
+				regulator-always-on;
+			};
+
+			vdd_ddr3_reg: bpro {
+				regulator-min-microvolt = <1500000>;
+				regulator-max-microvolt = <1500000>;
+				regulator-always-on;
+			};
+
+			vddcore1_reg: bmem {
+				regulator-min-microvolt = <1400000>;
+				regulator-max-microvolt = <1400000>;
+				regulator-always-on;
+			};
+
+			vddcore2_reg: bio {
+				regulator-min-microvolt = <1400000>;
+				regulator-max-microvolt = <1400000>;
+				regulator-always-on;
+			};
+
+			gen3v3_reg: bperi {
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-always-on;
+			};
+
+			vldo2_1v2_reg: ldo2 {
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <1200000>;
+				regulator-always-on;
+			};
+
+			vldo3_1v2_reg: ldo3 {
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <1200000>;
+				regulator-always-on;
+			};
+
+			vgen3_2v5_reg: ldo5 {
+				regulator-min-microvolt = <2500000>;
+				regulator-max-microvolt = <2500000>;
+				regulator-always-on;
+			};
+
+			vgen1_1v5_reg: ldo6 {
+				regulator-min-microvolt = <1500000>;
+				regulator-max-microvolt = <1500000>;
+				regulator-always-on;
+			};
+
+			vgen6_3v3_reg: ldo7 {
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-always-on;
+			};
+
+			vgen2_1v5_reg: ldo8 {
+				regulator-min-microvolt = <1500000>;
+				regulator-max-microvolt = <1500000>;
+				regulator-always-on;
+			};
+
+			vddio_reg: ldo9 {
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				regulator-always-on;
+			};
+
+			vgen4_1v8_reg: ldo10 {
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				regulator-always-on;
+			};
+
+			vgen5_2v8_reg: ldo11 {
+				regulator-min-microvolt = <2800000>;
+				regulator-max-microvolt = <2800000>;
+				regulator-always-on;
+			};
+		};
+	};
+};
+
+&fec {  /* fast ethernet controller */
+	//pinctrl-names = "default";
+	//pinctrl-0 = <&pinctrl_enet_1>;
+	phy-mode = "rgmii";
+    //phy-reset-gpios = <&gpio4 12 GPIO_ACTIVE_LOW>;
+	status = "okay";
+};
+
+&hdmi_audio {
+	status = "okay";
+};
+
+&hdmi_core {
+	ipu_id = <0>;
+	disp_id = <1>;
+	status = "okay";
+};
+
+&hdmi_video {
+	fsl,phy_reg_vlev = <0x0294>;
+	fsl,phy_reg_cksymtx = <0x800d>;
+	status = "okay";
+};
+
+&ldb {
+	status = "okay";
+
+	lvds-channel@0 {
+		fsl,data-mapping = "spwg";
+		fsl,data-width = <18>;
+		//primary;
+		status = "okay";
+
+		display-timings {
+			native-mode = <&timing0>;
+			timing0: hsd100pxn1 {
+				clock-frequency = <65000000>;
+				hactive = <1024>;
+				vactive = <768>;
+				hback-porch = <220>;
+				hfront-porch = <40>;
+				vback-porch = <21>;
+				vfront-porch = <7>;
+				hsync-len = <60>;
+				vsync-len = <10>;
+			};
+		};
+	};
+
+	lvds-channel@1 {
+		fsl,data-mapping = "spwg";
+		fsl,data-width = <18>;
+		primary;
+		status = "okay";
+
+		display-timings {
+			native-mode = <&timing1>;
+			timing1: hsd100pxn1 {
+				clock-frequency = <65000000>;
+				hactive = <1024>;
+				vactive = <768>;
+				hback-porch = <220>;
+				hfront-porch = <40>;
+				vback-porch = <21>;
+				vfront-porch = <7>;
+				hsync-len = <60>;
+				vsync-len = <10>;
+			};
+		};
+	};
+};
+
+&uart4 {  /* debug serial */
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart4_1>;
+	status = "okay";
+};
+
+&usdhc4 {  /* eMMC */
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_usdhc4_1>;
+	non-removable;
+    no-1-8-v;
+	bus-width = <8>;
+	status = "okay";
+};

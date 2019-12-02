@@ -1,12 +1,13 @@
 #!/bin/bash
 
-APP_DIR=/home/root/ATDM_Scripts
+PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
 
-if [ -f ${APP_DIR}/configure_pmic.exe ]
-then
-    ${APP_DIR}/configure_pmic.exe w 0x9f 0x01 &
-fi
+# configure pmic
+/usr/bin/configure_pmic.exe w 0x9f 0x01 &
+
+# configure can interfaces
+#canconfig can0 bitrate 250000 start
+#canconfig can1 bitrate 250000 start
 
 # enable modem
-/usr/bin/gpio_config 106 out
-/usr/bin/gpio_value 106 1
+/usr/bin/modem_power
